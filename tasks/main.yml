@@ -74,7 +74,6 @@
     owner=root
     group=root
     mode=0644
-  notify: Restart Jetty
 
 - name: Run and enable Jetty to start on boot
   service:
