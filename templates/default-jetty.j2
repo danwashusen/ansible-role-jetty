@@ -10,3 +10,7 @@ JETTY_ARGS='jetty.port={{ jetty_port }}'
 {% if jetty_java_options is defined %}
 JAVA_OPTIONS='{{ jetty_java_options }}'
 {% endif %}
+{% if jetty_tmpdir is defined %}
+TMPDIR='{{ jetty_tmpdir }}'
+{% endif %}
+
