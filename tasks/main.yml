@@ -2,13 +2,16 @@
 - shell: ls -la {{ jetty_dst_dir }}/current
   register: jetty_current
   ignore_errors: yes
+  tags: jetty
 
 - set_fact: 
     jetty_required: false
+  tags: jetty
 
 - set_fact: 
     jetty_required: true
   when: jetty_current.stdout.find("jetty-distribution-{{ jetty_version }}") == -1
+  tags: jetty
 
 - name: Create group
   group:
@@ -16,6 +19,7 @@
     state=present
     system=yes
   when: jetty_group_create
+  tags: jetty
 
 - name: Create user
   user:
@@ -29,12 +33,14 @@
     shell=/usr/sbin/nologin
     system=yes
   when: jetty_user_create
+  tags: jetty
 
 - name: Download distribution tarball
   get_url:
     url="http://eclipse.org/downloads/download.php?file=/jetty/{{ jetty_version }}/dist/jetty-distribution-{{ jetty_version }}.tar.gz&r=1"
     dest={{ jetty_src_dir }}
   when: jetty_required
+  tags: jetty
 
 - name: Unpack distribution
   shell: "tar zxf {{ jetty_src_dir }}/jetty-distribution-{{ jetty_version }}.tar.gz && chown -R {{ jetty_user_login }}:{{ jetty_group_name}} jetty-distribution-{{ jetty_version }}"
@@ -42,10 +48,12 @@
     chdir: "{{ jetty_dst_dir }}"
     creates: "{{ jetty_dst_dir }}/jetty-distribution-{{ jetty_version }}"
   when: jetty_required
+  tags: jetty
 
 - name: clear out included jetty webapps
   shell: rm -rf {{ jetty_dst_dir }}/jetty-distribution-{{ jetty_version }}/webapps/* {{ jetty_dst_dir }}/jetty-distribution-{{ jetty_version }}/contexts/*
   when: jetty_required
+  tags: jetty
 
 - name: Create symbolic link to distribution
   file:
@@ -54,18 +62,21 @@
     state=link
     force=yes
   when: jetty_required
+  tags: jetty
 
 - name: Create symbolic link to logs
   file:
     src="{{ jetty_dst_dir }}/current/logs"
     dest=/var/log/jetty
     state=link
+  tags: jetty
 
 - name: Create init script
   file:
     src="{{ jetty_dst_dir }}/current/bin/jetty.sh"
     dest=/etc/init.d/jetty
     state=link
+  tags: jetty
 
 - name: Create default configuration file
   template:
@@ -74,10 +85,13 @@
     owner=root
     group=root
     mode=0644
+  tags: jetty
 
 - name: Run and enable Jetty to start on boot
   service:
     name=jetty
     state=started
     enabled=yes
+  tags: jetty
+
 
