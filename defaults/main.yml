@@ -1,11 +1,12 @@
 ---
-jetty_version: '9.2.3.v20140905'
+jetty_version: '9.3.2.v20150730'
 jetty_src_dir: /tmp
 jetty_dst_dir: /usr/local/jetty
 
 jetty_user_create: true
 jetty_user_login: jetty
 jetty_user_homedir: /usr/local/jetty
+jetty_pid: /var/run/jetty.pid
 
 jetty_group_create: true
 jetty_group_name: jetty
