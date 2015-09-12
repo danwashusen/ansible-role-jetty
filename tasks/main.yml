@@ -87,11 +87,4 @@
     mode=0644
   tags: jetty
 
-- name: Run and enable Jetty to start on boot
-  service:
-    name=jetty
-    state=started
-    enabled=yes
-  tags: jetty
-
 
