@@ -1,3 +1,16 @@
+# DW - this seemed to drop virtual memory, didn't seem to help with res memory...
+# https://stackoverflow.com/questions/686397/how-can-a-java-process-with-xmx1024m-occupy-3gb-resident-memory
+# tune glibc memory allocation, optimize for low fragmentation
+# limit the number of arenas
+# requires glibc >= 2.16 since there was a bug in 
+# MALLOC_ARENA_TEST parameter handling that cause MALLOC_ARENA_MAX not to work
+export MALLOC_ARENA_MAX=1
+# disable dynamic mmap threshold, see M_MMAP_THRESHOLD in "man mallopt"
+export MALLOC_MMAP_THRESHOLD_=131072
+export MALLOC_TRIM_THRESHOLD_=131072
+export MALLOC_TOP_PAD_=131072
+export MALLOC_MMAP_MAX_=65536
+
 JETTY_PID={{ jetty_pid }}
 JETTY_HOME={{ jetty_dst_dir }}/current
 JETTY_USER={{ jetty_user_login }}
