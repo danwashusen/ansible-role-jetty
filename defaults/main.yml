@@ -12,3 +12,5 @@ jetty_group_create: true
 jetty_group_name: jetty
 
 jetty_groups_name: appdata
+
+jetty_stop_timeout: 300

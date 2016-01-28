@@ -71,6 +71,10 @@
     state=link
   tags: jetty
 
+- name: Update the init script stop process timeout
+  replace: dest="{{ jetty_dst_dir }}/current/bin/jetty.sh" regexp='TIMEOUT=(\d+)$' replace='TIMEOUT={{ jetty_stop_timeout }}' backup=yes
+  tags: jetty
+
 - name: Create init script
   file:
     src="{{ jetty_dst_dir }}/current/bin/jetty.sh"
