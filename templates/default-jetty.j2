@@ -15,11 +15,11 @@ JETTY_PID={{ jetty_pid }}
 JETTY_HOME={{ jetty_dst_dir }}/current
 JETTY_USER={{ jetty_user_login }}
 {% if jetty_host is defined and jetty_port is defined %}
-JETTY_ARGS="-Djetty.host={{ jetty_host }} -Djetty.port={{ jetty_port }}"
+JETTY_ARGS="jetty.host={{ jetty_host }} jetty.port={{ jetty_port }}"
 {% elif jetty_host is defined %}
-JETTY_ARGS="-Djetty.host={{ jetty_host }}"
+JETTY_ARGS="jetty.host={{ jetty_host }}"
 {% elif jetty_port is defined %}
-JETTY_ARGS="-Djetty.port={{ jetty_port }}"
+JETTY_ARGS="jetty.port={{ jetty_port }}"
 {% endif %}
 {% if jetty_java_options is defined %}
 JAVA_OPTIONS="{{ jetty_java_options }}"
