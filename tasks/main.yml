@@ -37,7 +37,7 @@
 
 - name: Download distribution tarball
   get_url:
-    url="http://download.eclipse.org/jetty/{{ jetty_version }}/dist/jetty-distribution-{{ jetty_version }}.tar.gz"
+    url="{{ jetty_tarball_base }}/jetty-distribution-{{ jetty_version }}.tar.gz"
     dest={{ jetty_src_dir }}
   when: jetty_required
   tags: jetty

@@ -1,5 +1,6 @@
 ---
-jetty_version: '9.3.8.v20160314'
+jetty_tarball_base: 'http://download.eclipse.org/jetty/{{ jetty_version }}/dist'
+jetty_version: '9.3.11.v20160721'
 jetty_src_dir: /tmp
 jetty_dst_dir: /usr/local/jetty
 
