@@ -75,13 +75,6 @@
   replace: dest="{{ jetty_dst_dir }}/current/bin/jetty.sh" regexp='TIMEOUT=(\d+)$' replace='TIMEOUT={{ jetty_stop_timeout }}' backup=yes
   tags: jetty
 
-- name: Create init script
-  file:
-    src="{{ jetty_dst_dir }}/current/bin/jetty.sh"
-    dest=/etc/init.d/jetty
-    state=link
-  tags: jetty
-
 - name: Create default configuration file
   template:
     src=default-jetty.j2
@@ -89,6 +82,12 @@
     owner=root
     group=root
     mode=0644
+  tags: jetty
+
+- name: Remove the init.d script
+  file:
+    path=/etc/init.d/jetty
+    state=absent
   tags: jetty
 
 - name: Create systemd service file
