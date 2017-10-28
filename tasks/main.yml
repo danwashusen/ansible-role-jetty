@@ -91,4 +91,15 @@
     mode=0644
   tags: jetty
 
+- name: Create systemd service file
+  template:
+    src=jetty.service.j2
+    dest=/etc/systemd/system/jetty.service
+    owner=root
+    group=root
+    mode=0644
+  tags: jetty
+
+  
+
 
