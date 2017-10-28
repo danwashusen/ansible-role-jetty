@@ -6,8 +6,12 @@ After=syslog.target network.target nss-lookup.target
 Type=forking
 PIDFile={{ jetty_pid }}
 
+RuntimeDirectory=jetty
+
 ExecStart={{ jetty_dst_dir }}/current/bin/jetty.sh start
 ExecStop={{ jetty_dst_dir }}/current/bin/jetty.sh stop
+ExecReload={{ jetty_dst_dir }}/current/bin/jetty.sh stop
+
 SuccessExitStatus=143
 
 User={{ jetty_user_login }}
