@@ -84,10 +84,19 @@
     mode=0644
   tags: jetty
 
+- name: Create init script
+  file:
+    src="{{ jetty_dst_dir }}/current/bin/jetty.sh"
+    dest=/etc/init.d/jetty
+    state=link
+  when: ansible_service_mgr == "service"
+  tags: jetty
+
 - name: Remove the init.d script
   file:
     path=/etc/init.d/jetty
     state=absent
+  when: ansible_service_mgr == "systemd"
   tags: jetty
 
 - name: Create systemd service file
@@ -97,6 +106,7 @@
     owner=root
     group=root
     mode=0644
+  when: ansible_service_mgr == "systemd"
   tags: jetty
 
   
