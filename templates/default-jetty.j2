@@ -11,7 +11,9 @@ export MALLOC_TRIM_THRESHOLD_=16384
 export MALLOC_TOP_PAD_=0
 export MALLOC_MMAP_MAX_=65536
 
+JETTY_RUN={{ jetty_run }}
 JETTY_PID={{ jetty_pid }}
+JETTY_START_LOG={{ jetty_start_log }}
 JETTY_HOME={{ jetty_dst_dir }}/current
 JETTY_USER={{ jetty_user_login }}
 {% if jetty_host is defined and jetty_port is defined %}

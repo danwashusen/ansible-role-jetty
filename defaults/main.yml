@@ -1,13 +1,15 @@
 ---
 jetty_tarball_base: 'http://download.eclipse.org/jetty/{{ jetty_version }}/dist'
-jetty_version: '9.3.11.v20160721'
+jetty_version: '9.4.8.v20171121'
 jetty_src_dir: /tmp
 jetty_dst_dir: /usr/local/jetty
 
 jetty_user_create: true
 jetty_user_login: jetty
 jetty_user_homedir: /usr/local/jetty
-jetty_pid: /var/run/jetty.pid
+jetty_run: /var/run/jetty
+jetty_pid: /var/run/jetty/jetty.pid
+jetty_start_log: /var/run/jetty/jetty-start.log
 
 jetty_group_create: true
 jetty_group_name: jetty
