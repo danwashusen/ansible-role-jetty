@@ -9,7 +9,8 @@ jetty_user_login: jetty
 jetty_user_homedir: /usr/local/jetty
 jetty_run: /var/run/jetty
 jetty_pid: /var/run/jetty/jetty.pid
-jetty_start_log: /var/run/jetty/jetty-start.log
+jetty_start_log: /appdata/logs/jetty/jetty-start.log
+jetty_state: /appdata/lib/jetty.state
 
 jetty_group_create: true
 jetty_group_name: jetty

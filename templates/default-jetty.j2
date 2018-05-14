@@ -13,9 +13,10 @@ export MALLOC_MMAP_MAX_=65536
 
 JETTY_RUN={{ jetty_run }}
 JETTY_PID={{ jetty_pid }}
-JETTY_START_LOG={{ jetty_start_log }}
 JETTY_HOME={{ jetty_dst_dir }}/current
 JETTY_USER={{ jetty_user_login }}
+JETTY_START_LOG={{ jetty_start_log }}
+JETTY_STATE={{ jetty_state }}
 {% if jetty_host is defined and jetty_port is defined %}
 JETTY_ARGS="jetty.host={{ jetty_host }} jetty.port={{ jetty_port }}"
 {% elif jetty_host is defined %}
