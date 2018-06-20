@@ -6,6 +6,7 @@ After=syslog.target network.target nss-lookup.target
 Type=forking
 PIDFile={{ jetty_pid }}
 OOMScoreAdjust=-999
+LimitNOFILE=65535
 
 RuntimeDirectory=jetty
 
